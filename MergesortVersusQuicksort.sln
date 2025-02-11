@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MergesortVersusQuicksort", "MergesortVersusQuicksort\MergesortVersusQuicksort.csproj", "{AAD984A3-4D67-4E17-B1C2-129171F2C799}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MergesortVersusQuicksort.Data", "MergesortVersusQuicksort.Data\MergesortVersusQuicksort.Data.csproj", "{1973BB39-3538-4E61-8CC6-FA32EBBC4EC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MergesortVersusQuicksort.Test", "MergesortVersusQuicksort.Test\MergesortVersusQuicksort.Test.csproj", "{B49C9A21-15A8-454B-8591-5FA09F3769AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{AAD984A3-4D67-4E17-B1C2-129171F2C799}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAD984A3-4D67-4E17-B1C2-129171F2C799}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAD984A3-4D67-4E17-B1C2-129171F2C799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1973BB39-3538-4E61-8CC6-FA32EBBC4EC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1973BB39-3538-4E61-8CC6-FA32EBBC4EC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1973BB39-3538-4E61-8CC6-FA32EBBC4EC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1973BB39-3538-4E61-8CC6-FA32EBBC4EC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B49C9A21-15A8-454B-8591-5FA09F3769AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B49C9A21-15A8-454B-8591-5FA09F3769AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B49C9A21-15A8-454B-8591-5FA09F3769AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B49C9A21-15A8-454B-8591-5FA09F3769AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
