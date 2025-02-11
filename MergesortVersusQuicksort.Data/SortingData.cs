@@ -2,8 +2,7 @@
 
 public static class SortingData
 {
-    //optional parameters rangeFrom and rangeTo are only used for random number generation
-    public static List<int> GenerateData(int n, SortingTypes sortingType, int rangeFrom = 0, int rangeTo = 10000)
+    public static List<int> GenerateData(int n, SortingTypes sortingType)
     {
         var generatedData = new List<int>();
         
@@ -13,7 +12,7 @@ public static class SortingData
             {
                 case SortingTypes.Random:
                     var random = new Random();
-                    generatedData.Add(random.Next(rangeFrom, rangeTo));
+                    generatedData.Add(random.Next(n * -1, n));
                     break;
                 case SortingTypes.Ascending:
                     generatedData.Add(i);
