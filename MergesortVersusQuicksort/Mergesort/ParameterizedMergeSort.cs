@@ -2,61 +2,55 @@
 
 public static class ParameterizedMergeSort
 {
-    public static List<int> MergeSort(List<int> unsorted, bool ascending)
+    public static void MergeSort(List<int> list, bool ascending)
     {
-        if (unsorted.Count <= 1)
-            return unsorted; // Base case: return the list if it has only one element
+        if (list.Count <= 1) //abort condition for recursion
+            return; 
 
-        // Divide the unsorted list into two halves
+        //split the list into a right and a left part
         var left = new List<int>();
         var right = new List<int>();
-
-        var middle = unsorted.Count / 2;
-        for (var i = 0; i < middle; i++) // Split the unsorted list into left
-            left.Add(unsorted[i]);
         
-        for (var i = middle; i < unsorted.Count; i++) // Split the unsorted list into right
-            right.Add(unsorted[i]);
+        for (int i = 0; i < list.Count / 2; i++)
+            left.Add(list[i]);
         
-        left = MergeSort(left, ascending); //Recursively perform Merge Sort for the left list
-        right = MergeSort(right, ascending); //Recursively perform Merge Sort for the right list
-
-        // Merge the sorted halves
-        return Merge(left, right, ascending);
+        for (int i = list.Count / 2; i < list.Count; i++)
+            right.Add(list[i]);
+        
+        MergeSort(left, ascending); //recursively continue splitting the left list
+        MergeSort(right, ascending); //recursively continue splitting the right list
+        
+        Merge(list, left, right, ascending); //when splitting is done, sort and merge the two halves
     }
-    
-    
-    private static List<int> Merge(List<int> left, List<int> right, bool ascending)
+
+    private static void Merge(List<int> list, List<int> left, List<int> right, bool ascending)
     {
-        var result = new List<int>();
+        list.Clear(); //the original list gets cleared, so it can hold the sorted and merged result
         
-        while (left.Count > 0 || right.Count > 0) 
+        while (left.Count > 0 && right.Count > 0) //loop as long as left AND right contain elements
         {
-            if (left.Count > 0 && right.Count > 0)
+            if (ascending ? (left[0] <= right[0]) : (left[0] >= right[0]))
             {
-                if (ascending ? (left.First() <= right.First()) : (left.First() >= right.First())) 
-                {
-                    result.Add(left.First());
-                    left.Remove(left.First()); // Remove the added element from the list
-                }
-                else
-                {
-                    result.Add(right.First());
-                    right.Remove(right.First()); // Remove the added element from the list
-                }
+                list.Add(left[0]);
+                left.RemoveAt(0);
             }
-            else if (left.Count > 0)
+            else
             {
-                result.Add(left.First());
-                left.Remove(left.First());
-            }
-            else if (right.Count > 0)
-            {
-                result.Add(right.First());
-                right.Remove(right.First());
+                list.Add(right[0]);
+                right.RemoveAt(0);
             }
         }
-
-        return result; // Return the merged and sorted list
+        
+        while (left.Count > 0) //clean up the left over elements from the left list (if there are any)
+        {
+            list.Add(left[0]);
+            left.RemoveAt(0);
+        }
+        
+        while (right.Count > 0) //clean up the left over elements from the right list (if there are any)
+        {
+            list.Add(right[0]);
+            right.RemoveAt(0);
+        }
     }
 }
