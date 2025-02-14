@@ -9,14 +9,13 @@ public class TestParameterizedMergeSort
     public void ShouldProduceAscendingSortedListFromRandom()
     {
         var data = SortingData.GenerateData(500, SortingTypes.Random);
-        var suspiciousSortedData = ParameterizedMergeSort.MergeSort(data, true);
-        var correctlySortedData = data.Order().ToList();
-
+        ParameterizedMergeSort.MergeSort(data, true);
+       
         var correctlySorted = true;
 
-        for (int i = 0; i < data.Count; i++)
+        for (int i = 0; i < data.Count - 1; i++)
         {
-            if (suspiciousSortedData[i] != correctlySortedData[i])
+            if (data[i] > data[i + 1])
             {
                 correctlySorted = false;
                 break;
@@ -31,14 +30,12 @@ public class TestParameterizedMergeSort
     public void ShouldProduceDescendingSortedListFromRandom()
     {
         var data = SortingData.GenerateData(500, SortingTypes.Random);
-        var suspiciousSortedData = ParameterizedMergeSort.MergeSort(data, false);
-        var correctlySortedData = data.OrderDescending().ToList();
-
+        ParameterizedMergeSort.MergeSort(data, false);
         var correctlySorted = true;
 
-        for (int i = 0; i < data.Count; i++)
+        for (int i = 0; i < data.Count - 1; i++)
         {
-            if (suspiciousSortedData[i] != correctlySortedData[i])
+            if (data[i] < data[i + 1])
             {
                 correctlySorted = false;
                 break;

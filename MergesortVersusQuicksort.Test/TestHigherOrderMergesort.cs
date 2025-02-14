@@ -12,14 +12,13 @@ public class TestHigherOrderMergesort
 
         Func<int, int, bool> comparisonFunction = (a, b) => a < b;
         
-        var suspiciousSortedData = HigherOrderMergesort.MergeSort(data, comparisonFunction);
-        var correctlySortedData = data.Order().ToList();
-
+        HigherOrderMergesort.MergeSort(data, comparisonFunction);
+        
         var correctlySorted = true;
 
-        for (int i = 0; i < data.Count; i++)
+        for (int i = 0; i < data.Count - 1; i++)
         {
-            if (suspiciousSortedData[i] != correctlySortedData[i])
+            if (data[i] > data[i + 1])
             {
                 correctlySorted = false;
                 break;
@@ -36,14 +35,13 @@ public class TestHigherOrderMergesort
 
         Func<int, int, bool> comparisonFunction = (a, b) => a > b;
         
-        var suspiciousSortedData = HigherOrderMergesort.MergeSort(data, comparisonFunction);
-        var correctlySortedData = data.OrderDescending().ToList();
-
+        HigherOrderMergesort.MergeSort(data, comparisonFunction);
+        
         var correctlySorted = true;
 
-        for (int i = 0; i < data.Count; i++)
+        for (int i = 0; i < data.Count - 1; i++)
         {
-            if (suspiciousSortedData[i] != correctlySortedData[i])
+            if (data[i] < data[i + 1])
             {
                 correctlySorted = false;
                 break;
