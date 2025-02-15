@@ -1,18 +1,18 @@
 ﻿namespace MergesortVersusQuicksort.Quicksort;
 
-public static class BasicQuicksort
+public class ParameterizedQuicksort
 {
-    public static void QuickSort(int[] array, int left, int right)
+    public static void QuickSort(int[] array, int left, int right, bool ascending)
     {
         if (left >= right) //abort condition for recursion
             return;
 
-        int pivotIndex = Partition(array, left, right); //Partition the array around a pivot
-        QuickSort(array, left, pivotIndex - 1); // Recursively sort the elements to the left of the pivot
-        QuickSort(array, pivotIndex + 1, right); //recursively sort the elements to the right of the pivot
+        int pivotIndex = Partition(array, left, right, ascending); //Partition the array around a pivot
+        QuickSort(array, left, pivotIndex - 1, ascending); // Recursively sort the elements to the left of the pivot
+        QuickSort(array, pivotIndex + 1, right, ascending); //recursively sort the elements to the right of the pivot
     }
 
-    private static int Partition(int[] array, int left, int right)
+    private static int Partition(int[] array, int left, int right, bool ascending)
     {
         int pivotValue = array[right]; //choose the last element as the pivot
         int boundaryIndex = left - 1; //this index tracks the boundary where elements are smaller than the pivot 
@@ -20,8 +20,12 @@ public static class BasicQuicksort
         //iterate over the segment, comparing each element with the pivot
         for (int i = left; i < right; i++)
         {
+            
+            // Depending on ascending or descending, choose the comparison.
+            bool condition = ascending ? array[i] < pivotValue : array[i] > pivotValue;
+            
             //check if the current element is smaller than the pivot
-            if (array[i] < pivotValue)
+            if (condition)
             {
                 boundaryIndex++;
 

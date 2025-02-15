@@ -1,18 +1,18 @@
 ﻿namespace MergesortVersusQuicksort.Quicksort;
 
-public static class BasicQuicksort
+public class HigherOrderQuicksort
 {
-    public static void QuickSort(int[] array, int left, int right)
+    public static void QuickSort(int[] array, int left, int right, Func<int, int, bool> compareFunc)
     {
         if (left >= right) //abort condition for recursion
             return;
 
-        int pivotIndex = Partition(array, left, right); //Partition the array around a pivot
-        QuickSort(array, left, pivotIndex - 1); // Recursively sort the elements to the left of the pivot
-        QuickSort(array, pivotIndex + 1, right); //recursively sort the elements to the right of the pivot
+        int pivotIndex = Partition(array, left, right, compareFunc); //Partition the array around a pivot
+        QuickSort(array, left, pivotIndex - 1, compareFunc); // Recursively sort the elements to the left of the pivot
+        QuickSort(array, pivotIndex + 1, right, compareFunc); //recursively sort the elements to the right of the pivot
     }
 
-    private static int Partition(int[] array, int left, int right)
+    private static int Partition(int[] array, int left, int right, Func<int, int, bool> compareFunc)
     {
         int pivotValue = array[right]; //choose the last element as the pivot
         int boundaryIndex = left - 1; //this index tracks the boundary where elements are smaller than the pivot 
@@ -21,7 +21,7 @@ public static class BasicQuicksort
         for (int i = left; i < right; i++)
         {
             //check if the current element is smaller than the pivot
-            if (array[i] < pivotValue)
+            if (compareFunc(array[i], pivotValue))
             {
                 boundaryIndex++;
 

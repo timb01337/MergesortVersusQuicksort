@@ -1,6 +1,6 @@
 ﻿namespace MergesortVersusQuicksort.Mergesort;
 
-public static class ParameterizedMergeSort
+public static class ParameterizedMergesort
 {
     public static void MergeSort(List<int> list, bool ascending)
     {
