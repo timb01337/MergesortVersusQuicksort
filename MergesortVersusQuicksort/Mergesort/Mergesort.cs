@@ -29,30 +29,29 @@ public static class Mergesort
             Console.Write(entry + " ");
     }
 
-    public static void RunAdvancedTests()
+    public static void RunAdvancedTests(int numberOfElements)
     {
-        var numberOfEntries = 100000;
-        var unsortedIntegers = SortingData.GenerateData(numberOfEntries, SortingTypes.Random);
-        var ascendingIntegers = SortingData.GenerateData(numberOfEntries, SortingTypes.Ascending);
-        var descendingIntegers = SortingData.GenerateData(numberOfEntries, SortingTypes.Descending);
+        var unsortedIntegers1 = SortingData.GenerateData(numberOfElements, SortingTypes.Random);
+        var unsortedIntegers2 = SortingData.GenerateData(numberOfElements, SortingTypes.Random);
+        var ascendingIntegers = SortingData.GenerateData(numberOfElements, SortingTypes.Ascending);
+        var descendingIntegers = SortingData.GenerateData(numberOfElements, SortingTypes.Descending);
 
         //JIT warmup
-        BasicMergesort.MergeSort(unsortedIntegers);
-
-
+        BasicMergesort.MergeSort(unsortedIntegers1);
+        
         var sw1 = Stopwatch.StartNew();
-        BasicMergesort.MergeSort(unsortedIntegers);
+        BasicMergesort.MergeSort(unsortedIntegers2);
         sw1.Stop();
-        Console.WriteLine($"Executed mergesort on {numberOfEntries} random entries in {sw1.ElapsedMilliseconds} ms.");
+        Console.WriteLine($"Executed mergesort on {numberOfElements} random entries in {sw1.ElapsedMilliseconds} ms.");
         
         var sw2 = Stopwatch.StartNew();
         BasicMergesort.MergeSort(ascendingIntegers);
         sw2.Stop();
-        Console.WriteLine($"Executed mergesort on {numberOfEntries} ascending entries in {sw2.ElapsedMilliseconds} ms.");
+        Console.WriteLine($"Executed mergesort on {numberOfElements} ascending entries in {sw2.ElapsedMilliseconds} ms.");
         
         var sw3 = Stopwatch.StartNew();
         BasicMergesort.MergeSort(descendingIntegers);
         sw3.Stop();
-        Console.WriteLine($"Executed mergesort on {numberOfEntries} descending entries in {sw3.ElapsedMilliseconds} ms.");
+        Console.WriteLine($"Executed mergesort on {numberOfElements} descending entries in {sw3.ElapsedMilliseconds} ms.");
     }
 }

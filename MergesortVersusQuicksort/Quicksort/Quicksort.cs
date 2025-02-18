@@ -29,30 +29,30 @@ public static class Quicksort
             Console.Write(entry + " ");
     }
 
-    public static void RunAdvancedTests()
+    public static void RunAdvancedTests(int numberOfElements)
     {
-        var numberOfEntries = 10000;
-        var unsortedIntegers = SortingData.GenerateData(numberOfEntries, SortingTypes.Random).ToArray();
-        var ascendingIntegers = SortingData.GenerateData(numberOfEntries, SortingTypes.Ascending).ToArray();
-        var descendingIntegers = SortingData.GenerateData(numberOfEntries, SortingTypes.Descending).ToArray();
+        var unsortedIntegers1 = SortingData.GenerateData(numberOfElements, SortingTypes.Random).ToArray();
+        var unsortedIntegers2 = SortingData.GenerateData(numberOfElements, SortingTypes.Random).ToArray();
+        var ascendingIntegers = SortingData.GenerateData(numberOfElements, SortingTypes.Ascending).ToArray();
+        var descendingIntegers = SortingData.GenerateData(numberOfElements, SortingTypes.Descending).ToArray();
 
         //JIT warmup
-        BasicQuicksort.QuickSort(unsortedIntegers, 0, unsortedIntegers.Length - 1);
+        BasicQuicksort.QuickSort(unsortedIntegers1.ToArray(), 0, unsortedIntegers1.Length - 1);
         
-        var sw1 = Stopwatch.StartNew();
-        BasicQuicksort.QuickSort(unsortedIntegers, 0, unsortedIntegers.Length - 1);
-        sw1.Stop();
-        Console.WriteLine($"Executed quicksort on {numberOfEntries} random entries in {sw1.ElapsedMilliseconds} ms.");
+         var sw1 = Stopwatch.StartNew();
+         BasicQuicksort.QuickSort(unsortedIntegers2, 0, unsortedIntegers2.Length - 1);
+         sw1.Stop();
+         Console.WriteLine($"Executed quicksort on {numberOfElements} random entries in {sw1.ElapsedMilliseconds} ms.");
         
         var sw2 = Stopwatch.StartNew();
         BasicQuicksort.QuickSort(ascendingIntegers, 0, ascendingIntegers.Length - 1);
         sw2.Stop();
-        Console.WriteLine($"Executed quicksort on {numberOfEntries} ascending entries in {sw2.ElapsedMilliseconds} ms.");
+        Console.WriteLine($"Executed quicksort on {numberOfElements} ascending entries in {sw2.ElapsedMilliseconds} ms.");
         
         var sw3 = Stopwatch.StartNew();
         BasicQuicksort.QuickSort(descendingIntegers, 0, descendingIntegers.Length - 1);
         sw3.Stop();
-        Console.WriteLine($"Executed quicksort on {numberOfEntries} descending entries in {sw3.ElapsedMilliseconds} ms.");
+        Console.WriteLine($"Executed quicksort on {numberOfElements} descending entries in {sw3.ElapsedMilliseconds} ms.");
     }
 
 }

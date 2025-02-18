@@ -1,11 +1,13 @@
 ﻿using MergesortVersusQuicksort.Mergesort;
 using MergesortVersusQuicksort.Quicksort;
 
-Mergesort.RunBasicTests();
-Mergesort.RunAdvancedTests();
+var n = 10000;
 
-Quicksort.RunBasicTests();
-Quicksort.RunAdvancedTests();
+//Mergesort.RunBasicTests();
+Mergesort.RunAdvancedTests(n);
+
+//Quicksort.RunBasicTests();
+Quicksort.RunAdvancedTests(n);
 
 
 
