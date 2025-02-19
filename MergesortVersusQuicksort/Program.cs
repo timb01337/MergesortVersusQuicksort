@@ -10,7 +10,7 @@ Mergesort.RunAdvancedTests(n);
 //Quicksort.RunBasicTests();
 Quicksort.RunAdvancedTests(n);
 
-Bubblesort.RunBasicTests();
+//Bubblesort.RunBasicTests();
 Bubblesort.RunAdvancedTests(n);
 
 

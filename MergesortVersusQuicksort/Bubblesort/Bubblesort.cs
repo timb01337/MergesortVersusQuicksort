@@ -46,13 +46,11 @@ public static class Bubblesort
         var sw2 = Stopwatch.StartNew();
         BasicBubblesort.BubbleSort(ascendingIntegers);
         sw2.Stop();
-        Console.WriteLine(
-            $"Executed bubblesort on {numberOfElements} ascending entries in {sw2.ElapsedMilliseconds} ms.");
+        Console.WriteLine($"Executed bubblesort on {numberOfElements} ascending entries in {sw2.ElapsedMilliseconds} ms.");
 
         var sw3 = Stopwatch.StartNew();
         BasicBubblesort.BubbleSort(descendingIntegers);
         sw3.Stop();
-        Console.WriteLine(
-            $"Executed bubblesort on {numberOfElements} descending entries in {sw3.ElapsedMilliseconds} ms.");
+        Console.WriteLine($"Executed bubblesort on {numberOfElements} descending entries in {sw3.ElapsedMilliseconds} ms.");
     }
 }
