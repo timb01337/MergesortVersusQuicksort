@@ -37,7 +37,7 @@ public static class Quicksort
         var descendingIntegers = SortingData.GenerateData(numberOfElements, SortingTypes.Descending).ToArray();
 
         //JIT warmup
-        BasicQuicksort.QuickSort(unsortedIntegers1.ToArray(), 0, unsortedIntegers1.Length - 1);
+        BasicQuicksort.QuickSort(unsortedIntegers1, 0, unsortedIntegers1.Length - 1);
         
          var sw1 = Stopwatch.StartNew();
          BasicQuicksort.QuickSort(unsortedIntegers2, 0, unsortedIntegers2.Length - 1);
