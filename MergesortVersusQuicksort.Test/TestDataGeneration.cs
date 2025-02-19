@@ -37,9 +37,11 @@ public class TestDataGeneration
 
         var listIsDescending = true;
 
-        for (var i = data.Count - 1; i > 0; i--)
+        for (var i = 0; i < data.Count; i++)
         {
-            if (data[i] != i)
+            var val = data.Count - 1 - i;
+            
+            if (data[i] != val)
             {
                 listIsDescending = false;
                 break;

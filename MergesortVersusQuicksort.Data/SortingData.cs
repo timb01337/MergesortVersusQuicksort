@@ -18,7 +18,7 @@ public static class SortingData
                     generatedData.Add(i);
                     break;
                 case SortingTypes.Descending:
-                    generatedData.Add(i);
+                    generatedData.Add(n - 1 - i);
                     break;
                 default:
                     break;
